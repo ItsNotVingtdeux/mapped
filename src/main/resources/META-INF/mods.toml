@@ -27,7 +27,7 @@ displayName="Mapped" #mandatory
 # A URL for the "homepage" for this mod, displayed in the mod UI
 #displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
-logoFile="" #optional
+logoFile="assets/mapped/textures/gui/mod_icon.png" #optional
 # A text field displayed in the mod UI
 credits="Java, duh" #optional
 # A text field displayed in the mod UI
@@ -42,7 +42,7 @@ authors="ItsVingtdeux" #optional
 
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-MAPPED YEAAAAAAAAAAAAAAAAAH
+Client-side quality of life mod that adds a minimap, waypoints, paths, and more.
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.mapped]] #optional
