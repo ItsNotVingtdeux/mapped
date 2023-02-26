@@ -17,7 +17,7 @@ import org.slf4j.Logger;
 public class mapped
 {
     public static final String MOD_ID = "mapped";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public mapped()
     {
