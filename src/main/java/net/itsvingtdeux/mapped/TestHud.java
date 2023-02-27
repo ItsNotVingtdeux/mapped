@@ -13,9 +13,11 @@ import net.minecraft.world.level.material.MaterialColor;
 public class TestHud {
     private static final ResourceLocation RESOURCE_WHITE = new ResourceLocation(mapped.MOD_ID,
             "textures/gui/minimap/white.png");
+    private static final ResourceLocation RESOURCE_WIDGETS = new ResourceLocation(mapped.MOD_ID,
+            "textures/gui/minimap/widgets.png");
 
     public static final IGuiOverlay HUD_TEST = ((gui, poseStack, partialTick, width, height) -> {
-        int pixelSize = 5;
+        int pixelSize = 6;
         int pixelsInMap = 11;
         LocalPlayer myPlayer = Minecraft.getInstance().player;
         float myAngle = (myPlayer.getYRot() - 180) % 360;
@@ -42,8 +44,11 @@ public class TestHud {
                 RenderSystem.setShader(GameRenderer::getPositionTexShader);
                 RenderSystem.setShaderColor(myR, myG, myB, 1.0F);
                 RenderSystem.setShaderTexture(0, RESOURCE_WHITE);
-                GuiComponent.blit(poseStack, x * pixelSize, y * pixelSize, 0, 0, pixelSize, pixelSize, 1, 1);
+                GuiComponent.blit(poseStack, x * pixelSize + 3, y * pixelSize + 3, 0, 0, pixelSize, pixelSize, 1, 1);
             }
         }
+        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+        RenderSystem.setShaderTexture(0, RESOURCE_WIDGETS);
+        GuiComponent.blit(poseStack, 0, 0, 0, 0, 72, 72, 256, 256);
     });
 }
