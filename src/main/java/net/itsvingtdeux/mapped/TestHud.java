@@ -4,6 +4,7 @@ import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.client.gui.overlay.IGuiOverlay;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
@@ -33,10 +34,18 @@ public class TestHud {
                 double searchXR = searchX * Math.cos(myRad) - searchY * Math.sin(myRad);
                 double searchYR = searchY * Math.cos(myRad) + searchX * Math.sin(myRad);
                 double flX = myPlayer.getX() + searchXR;
-                double flY = myPlayer.getY() - 0.5;
+                double flY = myPlayer.getY();
                 double flZ = myPlayer.getZ() + searchYR;
                 BlockPos myPosition = new BlockPos(flX, flY, flZ);
                 BlockState myState = Minecraft.getInstance().level.getBlockState(myPosition);
+                while(myState.getBlock() == Blocks.AIR) {
+                    flY--;
+                    myPosition = new BlockPos(flX, flY, flZ);
+                    myState = Minecraft.getInstance().level.getBlockState(myPosition);
+                    if(flY < -64){
+                        break;
+                    }
+                }
                 int myColor = myState.getMaterial().getColor().calculateRGBColor(MaterialColor.Brightness.NORMAL);
                 float myR = (myColor & 0xFF) / 255.0F;
                 float myG = ((myColor & 0xFF00) >>> 8) / 255.0F;
